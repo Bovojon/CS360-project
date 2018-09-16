@@ -1,5 +1,4 @@
-// CS360 Group Project
-// Jon Abdulloev, James Tran, Aakarsh Sinha, Minh Vu
+// Jon Abdulloev, Aakarsh Sinha
 
 import java.io.*;
 import java.util.Scanner;
@@ -11,11 +10,11 @@ import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 
-public class Phase1SentimentAnalyzer {
+public class ReviewSentimentAnalyzer {
   public static float getRating(String input) throws IOException {
   	List<String> posWords = new ArrayList<String>();
   	List<String> negWords = new ArrayList<String>();
-  
+
 	Scanner inputNegativeFile = new Scanner(FileSystem.get(new Configuration()).open(new Path("/lib_Jon/negative.txt")));
   	Scanner inputPositiveFile = new Scanner(FileSystem.get(new Configuration()).open(new Path("/lib_Jon/positive.txt")));
 
@@ -26,10 +25,10 @@ public class Phase1SentimentAnalyzer {
     while (inputNegativeFile.hasNext()) {
       negWords.add(inputNegativeFile.nextLine());
     }
-    
+
     inputNegativeFile.close();
     inputPositiveFile.close();
-    
+
     // Clean up input
 		input = input.toLowerCase();
 		input = input.trim();
